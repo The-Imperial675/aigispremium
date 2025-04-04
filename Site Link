@@ -1,2 +1,74 @@
 Home https://sites.google.com/view/aigispremium/home
 Tools https://sites.google.com/view/aigispremium/tools-services
+
+Our about:blank Fullscreen button code 
+(Fullcreen button is based on an about:blank fullscreen button found from an anonymous user on pastebin)
+
+<html><head><base target="_blank"></head><body><button class="c-button">Fullscreen</button>
+<style>
+.c-button {
+  min-width: 100%;
+  font-family: aqua;
+  appearance: above;
+  border: 16;
+  border-radius: 50px;
+  background: #f1c232;
+  color: #fff;
+  padding: 0px 48px;
+  font-size: 40px;
+  cursor: pointer;
+}
+ 
+.c-button:hover {
+  background: #e4b834;
+}
+ 
+.c-button:focus {
+  outline: none;
+  box-shadow: 0 0 0 4px #cbd6ee;
+}
+ 
+ .c-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+ 
+</style>
+ 
+<script>
+        var urlObj = new window.URL(window.location.href);
+        var url = "www.example.com"
+        if (url) {
+            var win;
+ 
+            document.querySelector('button').onclick = function() {
+                if (win) {
+                    win.focus();
+                } else {
+                    win = window.open();
+                    win.document.body.style.margin = '0';
+                    win.document.body.style.height = '100vh';
+                    var iframe = win.document.createElement('iframe');
+                    iframe.style.border = 'none';
+                    iframe.style.width = '100%';
+                    iframe.style.height = '100%';
+                    iframe.style.margin = '0';
+                    iframe.src = url;
+                    win.document.body.appendChild(iframe);
+ 
+ 
+                    var interval = setInterval(function() {
+                        if (win.closed) {
+                            clearInterval(interval);
+                            win = undefined;
+ 
+                        }
+                    }, 500);
+ 
+ 
+                }
+            };
+        }
+    </script></body></html>
